@@ -6,3 +6,5 @@ Run Server : vertx run -cp ./cluster/build/libs/cluster.jar --ha com.cloudiot.ve
 Run Bare Verticles : vertx bare -cp ./cluster/build/libs/cluster.jar -cluster-host IP_adress_of_host
 
 Server listening on port 8000
+
+The clustering group name is located in the build.gradle
