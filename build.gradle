@@ -1,0 +1,38 @@
+group 'com.cloudiot.vertx'
+version '1.0-SNAPSHOT'
+
+ext {
+    javaVersion = '1.8'
+}
+
+allprojects { project ->
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+subprojects { project ->
+    project.plugins.withType(JavaPlugin) {
+        project.apply from: "${rootProject.projectDir}/libraries.gradle"
+        project.apply plugin: 'idea'
+
+        idea {
+            module {
+                downloadJavadoc = true
+                downloadSources = true
+            }
+        }
+
+        compileJava {
+            sourceCompatibility = javaVersion
+            targetCompatibility = javaVersion
+            options.encoding = 'UTF-8'
+        }
+
+        test {
+            testLogging.events = ['passed', 'failed']
+        }
+    }
+}

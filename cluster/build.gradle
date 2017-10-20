@@ -1,0 +1,8 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    compile "${libs['vertx-web']}"
+    compile "${libs['vertx-hazelcast']}"
+}
