@@ -13,43 +13,47 @@ import java.lang.management.ManagementFactory;
  */
 public class Server extends AbstractVerticle {
 
-  // Convenience method so you can run it in your IDE
-  public static void main(String[] args) {
-    Launcher.main(new String[] { "run", Server.class.getName(), "-ha"});
-  }
+    // Convenience method so you can run it in your IDE
+    public static void main(String[] args) {
+        Launcher.main(new String[]{"run", Server.class.getName(), "-ha"});
+    }
 
-  @Override
-  public void start() throws Exception {
-      String QUEUE_NAME = "task_queue" ;
-      Vertx vertx = Vertx.vertx();
+    @Override
+    public void start() throws Exception {
+        String QUEUE_NAME = "task_queue";
+        Vertx vertx = Vertx.vertx();
 
-      // PARAMETRE DE CONNEXION RABBITMQ
-      RabbitMQOptions config = new RabbitMQOptions();
-      // Each parameter is optional
-      // The default parameter with be used if the parameter is not set
-      config.setUser("test");
-      config.setPassword("test");
-      config.setHost("10.45.0.254"); // adresse IP du cluster rabbitMQ
-      config.setPort(5672);
-      config.setConnectionTimeout(6000); // in milliseconds
-      config.setRequestedHeartbeat(60); // in seconds
-      config.setHandshakeTimeout(6000); // in milliseconds
-      config.setRequestedChannelMax(5);
-      config.setNetworkRecoveryInterval(500); // in milliseconds
-      config.setAutomaticRecoveryEnabled(true);
-      RabbitMQClient client = RabbitMQClient.create(vertx, config);
+        // PARAMETRE DE CONNEXION RABBITMQ
+        RabbitMQOptions config = new RabbitMQOptions();
+        // Each parameter is optional
+        // The default parameter with be used if the parameter is not set
+        config.setUser("test");
+        config.setPassword("test");
+        config.setHost("10.45.0.254"); // adresse IP du cluster rabbitMQ
+        config.setPort(5672);
+        config.setConnectionTimeout(6000); // in milliseconds
+        config.setRequestedHeartbeat(60); // in seconds
+        config.setHandshakeTimeout(6000); // in milliseconds
+        config.setRequestedChannelMax(5);
+        config.setNetworkRecoveryInterval(500); // in milliseconds
+        config.setAutomaticRecoveryEnabled(true);
+        RabbitMQClient client = RabbitMQClient.create(vertx, config);
 
-      client.start(v-> {
-          vertx.setPeriodic(100, id -> { // Toutes les 100 miliisecondes
-              client.basicGet(QUEUE_NAME, true, getResult -> {
-                  if (getResult.succeeded()) {
-                      JsonObject msg = getResult.result();
-                      System.out.println("Got message: " + msg.getString("body"));
-                  } else {
-                      getResult.cause().printStackTrace();
-                  }
-              });
-          });
-      });
-  }
+        vertx.createHttpServer().requestHandler(req -> {
+            final String response = "";
+            client.start(v-> {
+                vertx.setPeriodic(100, id -> { // Toutes les 100 miliisecondes
+                    client.basicGet(QUEUE_NAME, true, getResult -> {
+                        if (getResult.succeeded()) {
+                            JsonObject msg = getResult.result();
+                            response = msg.getString("body");
+                        } else {
+                            getResult.cause().printStackTrace();
+                        }
+                    });
+                });
+            });
+            req.response().end(response);
+        }).listen(8080);
+    }
 }
