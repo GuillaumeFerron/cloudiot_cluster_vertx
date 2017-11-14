@@ -1,7 +1,0 @@
-rootProject.name = 'CloudIoT'
-
-include 'sockjs-eventbus-bridge'
-include 'message-sender'
-include 'stocks-sender'
-include 'client'
-include 'cluster'

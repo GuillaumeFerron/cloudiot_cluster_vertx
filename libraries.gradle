@@ -1,9 +1,0 @@
-ext {
-    vertxVersion = '3.2.1'
-    libs = [
-        'vertx-web':            "io.vertx:vertx-web:$vertxVersion",
-        'vertx-hazelcast':      "io.vertx:vertx-hazelcast:$vertxVersion",
-        'vertx-unit':           "io.vertx:vertx-unit:$vertxVersion",
-        'junit':                'junit:junit:4.12'
-    ]
-}
