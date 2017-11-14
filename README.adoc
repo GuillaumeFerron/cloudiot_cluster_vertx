@@ -13,5 +13,6 @@ vertx bare -cp target/classes/ -cluster-host [ADDRESSE_IP_RPI]
 Pour tester, ouvrir sur http://[ADDRESSE_IP_RPI]:8080
 Killer le serveur avec “kill -9 [N°PID]” → on aperçoit que le serveur change de RPI (on peut trouver le PID du verticle en lançant “jps | grep Launcher”
 
-## Référence : https://github.com/vert-x3/vertx-examples/tree/master/core-examples 
+## Référence : 
+https://github.com/vert-x3/vertx-examples/tree/master/core-examples 
 
