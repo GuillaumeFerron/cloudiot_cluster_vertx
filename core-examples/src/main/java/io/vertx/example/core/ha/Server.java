@@ -19,13 +19,13 @@ public class Server extends AbstractVerticle {
 
     // Convenience method so you can run it in your IDE
     public static void main(String[] args) {
+
         Launcher.main(new String[]{"run", Server.class.getName(), "-ha"});
     }
 
     @Override
     public void start() throws Exception {
         String QUEUE_NAME = "task_queue";
-        Vertx vertx = Vertx.vertx();
 
         // PARAMETRE DE CONNEXION RABBITMQ
         RabbitMQOptions config = new RabbitMQOptions();
