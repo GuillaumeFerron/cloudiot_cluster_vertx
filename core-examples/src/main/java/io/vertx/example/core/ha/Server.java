@@ -44,20 +44,20 @@ public class Server extends AbstractVerticle {
         RabbitMQClient client = RabbitMQClient.create(vertx, config);
 
         vertx.createHttpServer().requestHandler(req -> {
-            final String response = "";
+            String response = "";
             client.start(v-> {
                 vertx.setPeriodic(100, id -> { // Toutes les 100 miliisecondes
                     client.basicGet(QUEUE_NAME, true, getResult -> {
                         if (getResult.succeeded()) {
                             JsonObject msg = getResult.result();
                             response = msg.getString("body");
+                            req.response().end(response);
                         } else {
                             getResult.cause().printStackTrace();
                         }
                     });
                 });
             });
-            req.response().end(response);
         }).listen(8080);
     }
 }
