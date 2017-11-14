@@ -35,6 +35,11 @@
       <version>${project.version}</version>
     </dependency>
 
+      <dependency>
+          <groupId>io.vertx</groupId>
+          <artifactId>vertx-rabbitmq-client</artifactId>
+          <version>3.5.0</version>
+      </dependency>
   </dependencies>
 
   <build>
