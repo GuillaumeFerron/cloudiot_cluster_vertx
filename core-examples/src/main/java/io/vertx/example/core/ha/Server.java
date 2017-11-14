@@ -2,6 +2,10 @@ package io.vertx.example.core.ha;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Launcher;
+import io.vertx.core.Vertx;
+import io.vertx.core.json.JsonObject;
+import io.vertx.rabbitmq.RabbitMQClient;
+import io.vertx.rabbitmq.RabbitMQOptions;
 
 import java.lang.management.ManagementFactory;
 
