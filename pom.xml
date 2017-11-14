@@ -2,41 +2,54 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.vertx</groupId>
+    <groupId>io.vertx</groupId>
 
-  <artifactId>vertx-examples</artifactId>
+    <artifactId>vertx-examples</artifactId>
 
-  <packaging>pom</packaging>
+    <packaging>pom</packaging>
 
-  <version>3.5.0</version>
+    <version>3.5.0</version>
 
-  <modules>
-    <module>core-examples</module>
-    <module>examples-utils</module>  
-  </modules>
+    <dependencies>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-core</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-rabbitmq-client</artifactId>
+            <version>3.5.0</version>
+        </dependency>
+    </dependencies>
 
-  <profiles>
+    <modules>
+        <module>core-examples</module>
+        <module>examples-utils</module>
+    </modules>
 
-    <profile>
-      <id>java9</id>
-      <activation>
-        <jdk>9</jdk>
-      </activation>
-      <modules>
-        <module>java9-examples</module>
-      </modules>
-    </profile>
+    <profiles>
 
-    <profile>
-      <id>staging</id>
-      <repositories>
-        <repository>
-          <id>staging</id>
-          <url>https://oss.sonatype.org/content/repositories/iovertx-3720/</url>
-        </repository>
-      </repositories>
-    </profile>
-  </profiles>
+        <profile>
+            <id>java9</id>
+            <activation>
+                <jdk>9</jdk>
+            </activation>
+            <modules>
+                <module>java9-examples</module>
+            </modules>
+        </profile>
+
+        <profile>
+            <id>staging</id>
+            <repositories>
+                <repository>
+                    <id>staging</id>
+                    <url>https://oss.sonatype.org/content/repositories/iovertx-3720/</url>
+                </repository>
+            </repositories>
+        </profile>
+    </profiles>
 </project>
