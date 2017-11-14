@@ -3,10 +3,12 @@
 ## Compilation : 
 “mvn clean package” à la racine du dossier 
 
-## RPI Serveur : 
+## RPI Serveur :
+Get in the core-examples/target/classes/java and execute :
 vertx run io.vertx.example.core.ha.Server -ha -cp target/classes -cluster-host  [ADDRESSE_IP_RPI]
 
-## RPI Backup : 
+## RPI Backup :
+Get in the core-examples/target/classes/java and execute :
 vertx bare -cp target/classes/ -cluster-host [ADDRESSE_IP_RPI] 
 
 ## Tester :
