@@ -1,78 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-  <groupId>io.vertx</groupId>
-  <artifactId>core-examples</artifactId>
-  <version>3.5.0</version>
+	<groupId>io.vertx</groupId>
+	<artifactId>core-examples</artifactId>
+	<version>3.5.0</version>
 
-  <dependencies>
+	<dependencies>
 
-    <dependency>
-      <groupId>io.vertx</groupId>
-      <artifactId>vertx-core</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-    <dependency>
-      <groupId>io.netty</groupId>
-      <artifactId>netty-tcnative-boringssl-static</artifactId>
-      <version>2.0.6.Final</version>
-    </dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-tcnative-boringssl-static</artifactId>
+			<version>2.0.6.Final</version>
+		</dependency>
 
-    <dependency>
-      <groupId>io.vertx</groupId>
-      <artifactId>examples-utils</artifactId>
-      <version>${project.version}</version>
-      <optional>true</optional>
-    </dependency>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>examples-utils</artifactId>
+			<version>${project.version}</version>
+			<optional>true</optional>
+		</dependency>
 
-    <dependency>
-      <groupId>io.vertx</groupId>
-      <artifactId>vertx-hazelcast</artifactId>
-      <version>${project.version}</version>
-    </dependency>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-hazelcast</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
-      <dependency>
-          <groupId>io.vertx</groupId>
-          <artifactId>vertx-rabbitmq-client</artifactId>
-          <version>3.5.0</version>
-      </dependency>
-  </dependencies>
+		<dependency>
+			<groupId>io.vertx</groupId>
+			<artifactId>vertx-rabbitmq-client</artifactId>
+			<version>3.5.0</version>
+		</dependency>
+	</dependencies>
 
-  <build>
+	<build>
 
-    <pluginManagement>
-      <plugins>
-        <!-- We specify the Maven compiler plugin as we need to set it to Java 1.8 -->
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.1</version>
-          <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
-            <compilerArgs>
-              <arg>-Acodetrans.output=${project.basedir}/src/main</arg>
-              <arg>-Acodetrans.config=${basedir}/codetrans-config.json</arg>
-            </compilerArgs>
-          </configuration>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+		<pluginManagement>
+			<plugins>
+				<!-- We specify the Maven compiler plugin as we need to set it to Java 1.8 -->
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.8</source>
+						<target>1.8</target>
+						<compilerArgs>
+							<arg>-Acodetrans.output=${project.basedir}/src/main</arg>
+							<arg>-Acodetrans.config=${basedir}/codetrans-config.json</arg>
+						</compilerArgs>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
 
-  <profiles>
-    <profile>
-      <id>staging</id>
-      <repositories>
-        <repository>
-          <id>staging</id>
-          <url>https://oss.sonatype.org/content/repositories/iovertx-3720/</url>
-        </repository>
-      </repositories>
-    </profile>
-  </profiles>
+	<profiles>
+		<profile>
+			<id>staging</id>
+			<repositories>
+				<repository>
+					<id>staging</id>
+					<url>https://oss.sonatype.org/content/repositories/iovertx-3720/</url>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
 
 </project>
+

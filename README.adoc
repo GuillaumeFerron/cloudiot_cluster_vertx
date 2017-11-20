@@ -3,18 +3,16 @@
 ## Compilation : 
 “mvn clean package” à la racine du dossier 
 
-## RPI Serveur :
-Get in the core-examples/target/classes/java and execute :
+## RPI Serveur : 
 vertx run io.vertx.example.core.ha.Server -ha -cp target/classes -cluster-host  [ADDRESSE_IP_RPI]
 
-## RPI Backup :
-Get in the core-examples/target/classes/java and execute :
+## RPI Backup : 
 vertx bare -cp target/classes/ -cluster-host [ADDRESSE_IP_RPI] 
 
 ## Tester :
 Pour tester, ouvrir sur http://[ADDRESSE_IP_RPI]:8080
 Killer le serveur avec “kill -9 [N°PID]” → on aperçoit que le serveur change de RPI (on peut trouver le PID du verticle en lançant “jps | grep Launcher”
 
-## Référence : 
+## Référence : 
 https://github.com/vert-x3/vertx-examples/tree/master/core-examples 
 
