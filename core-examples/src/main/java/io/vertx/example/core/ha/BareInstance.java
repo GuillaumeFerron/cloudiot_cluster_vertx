@@ -3,10 +3,9 @@ package io.vertx.example.core.ha;
 import io.vertx.core.Launcher;
 
 /**
- * Just start a bare instance of vert.x .
- * It will receive the Server verticle when the process is killed.
+ * This is a bare verticle intended to be deployed as a back up verticle.
  *
- * @author <a href="http://escoffier.me">Clement Escoffier</a>
+ * The verticle is intended to be launched using the `-ha` option.
  */
 public class BareInstance {
 

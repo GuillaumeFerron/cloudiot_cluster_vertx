@@ -9,12 +9,11 @@ import io.vertx.rabbitmq.RabbitMQOptions;
 
 import java.lang.management.ManagementFactory;
 
-/*
- * This is just a simple verticle creating a HTTP server. The served response contains an id identifying the process
- * for illustration purpose as it will change when the verticle is migrated.
+/***
+ * This is a server verticle intended to be deployed as a main verticle.
  *
  * The verticle is intended to be launched using the `-ha` option.
- */
+ ***/
 public class Server extends AbstractVerticle {
 
     // Convenience method so you can run it in your IDE
